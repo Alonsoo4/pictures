@@ -1,13 +1,13 @@
 import { useState } from "react"
 import './SearchBar.css'
 
-const SearchBar = () => {
+const SearchBar = ({ onSubmit }) => {
   const [term, setTerm] = useState('')
   
   const handleFormSubmit = (event) => {
     event.preventDefault()
     console.log('Necesuto decirle al componente sobre los datos')
-    onsubmit(term)
+    onSubmit(term)
   }
 
   const handleChange =(event) =>{
@@ -15,11 +15,12 @@ const SearchBar = () => {
   }
 
   console.log('term',term)
+  
   return (
     <div className="search-bar">
-    <form onsubmit={handleChange}>
+    <form onSubmit={handleFormSubmit}>
       <label>termino de la busqueda</label>
-      <input onCharge={handleChange} value={term} />
+      <input onChange={handleChange} value={term} />
     </form>
     </div>
   )
